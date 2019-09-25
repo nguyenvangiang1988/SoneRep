@@ -3,7 +3,7 @@
 #include <math.h>
 #include <stdlib.h>
 
-void tong_hieu(int a, int b, float c, float d){
+void sum_sub(int a, int b, float c, float d){
     printf("%d %d\n", a+b,a-b);
     printf("%.1f %.1f", c+d,c-d);
 }
@@ -12,8 +12,8 @@ int main()
 {   
     int a,b;
     float c,d;
-	scanf("%d %d", &a,&b);
+    scanf("%d %d", &a,&b);
     scanf("%f %f", &c,&d);
-    tong_hieu(a,b,c,d);
+    sum_sub(a,b,c,d);
     return 0;
 }
