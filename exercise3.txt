@@ -61,7 +61,7 @@ node Input(){
 }
 
 int SumAllValues(node head){
-	int sum=0;
+    int sum=0;
     for(node p = head; p != NULL; p = p->next){
     	sum+=p->data;
     }
@@ -69,7 +69,7 @@ int SumAllValues(node head){
 }
 
 int LargestValue(node head){
-	int max=0;
+    int max=0;
     for(node p = head; p != NULL; p = p->next){
     	max=((p->data)>max)?p->data:max;
     }
