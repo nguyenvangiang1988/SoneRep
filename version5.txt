@@ -1,0 +1,28 @@
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <string.h>
+
+void MergeFile(char *pathOne, char *pathTwo, char *outFile){
+	int fd1, fd2, fd3;
+	ssize_t nr1, nr2;
+	char buf1[100];
+	char buf2[50];
+	fd1 = open(pathOne, O_RDONLY);
+	fd2 = open(pathTwo, O_RDONLY);
+	fd3 = open(outFile, O_WRONLY | O_CREAT, 0600);
+	nr1 = read(fd1, buf1, 50);
+	nr2 = read(fd2, buf2, 50);
+	strcat(buf1,buf2);
+	buf1[nr1+nr2] = '\0';
+	write(fd3,buf1,100);
+	close(fd1);
+	close(fd2);
+	close(fd3);
+}
+
+int main(){	
+	MergeFile("text-read.txt","text-read.txt","text-write3.txt");
+}
