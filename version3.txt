@@ -1,0 +1,28 @@
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+void CountNumber(char *path){
+	int fd = open(path, O_RDONLY);
+	char buf[50];
+	ssize_t nr;
+	nr = read (fd, buf, 50);
+	if (nr == -1){
+		printf("read error!");
+	}
+	int n = strlen(buf);
+	int countwords=0, i;
+	if(buf[0] != ' ')
+		countwords = 1;
+	for(i=0; i<n-1; i++){
+		if(buf[i] == ' ' && buf[i+1] != ' ')
+			countwords++;
+	}
+	printf("Number of words: %d\n",countwords);
+	printf("number of characters: %d", nr-countwords);
+}
+
+int main(){	
+	CountNumber("count.txt");
+}
