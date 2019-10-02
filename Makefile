@@ -1,6 +1,6 @@
-list: main.o list.o
-	gcc -o list main.o list.o
-main.o: main.c list.h
+filelib: main.o filelib.o
+	gcc -o filelib main.o filelib.o
+main.o: main.c filelib.h
 	gcc -c main.c
-list.o: list.c list.h
-	gcc -c list.c
+filelib.o: filelib.c filelib.h
+	gcc -c filelib.c

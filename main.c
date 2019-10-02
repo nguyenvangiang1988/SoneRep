@@ -1,17 +1,16 @@
-#include <stdio.h>  
-#include "list.h"
+#include <stdio.h>
+#include "filelib.h"
 
 int main(){
-	int n;
-	printf("Create a linked link");
-	node head = Input();
-	Traverser(head);
-	printf("\nSum all values: %d", SumAllValues(head));
-	printf("\nLargest value: %d", LargestValue(head));
-	printf("\nLargest increment subset: ");
-	LargestSubset(head);
-	printf("\nGiven an index: ");
-	scanf("%d",&n);
-	int index = SearchValue(head,n);
-	printf("Value of that index: %d", index);
+	int n, m;
+	printf("Line Number to write: ");
+	scanf("%d", &n);
+	WriteSingleLines("text-write2.txt",n);
+	printf("\n");
+	ReadFileToArray("text-read.txt");
+	CountNumber("count.txt");
+	printf("Line Number to delete: ");
+	scanf("%d", &m);
+	DeleteLine("text-detele.txt",m);
+	MergeFile("text-read.txt","text-read.txt","text-write3.txt");
 }
