@@ -6,7 +6,7 @@ char *WriteSingleLines(char *path, int lineNumber){
 	if (fd == -1){
 		printf("write error!");
 		exit(1);
-    }
+    	}
 	while (lineNumber != 0){
 		write(fd,"Hello World!\n",13);
 		lineNumber--;
