@@ -14,5 +14,7 @@ char **ReadFileToArray(char *path);
 void CountNumber(char *path);
 void DeleteLine(char *path, int lineNumber);
 void MergeFile(char *pathOne, char *pathTwo, char *outFile);
+void EnCrypt(char *path, char *outFile, int n);
+void DeCrypt(char *path, int n);
 
 #endif /* FILE_H_ */

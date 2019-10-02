@@ -128,10 +128,52 @@ void MergeFile(char *pathOne, char *pathTwo, char *outFile){
 	nr2 = read(fd2, buf2, 50);
 	strcat(buf1,buf2);
 	buf1[nr1+nr2] = '\0';
-	write(fd3,buf1,100);
+	write(fd3,buf1,nr1+nr2);
 	close(fd1);
 	close(fd2);
 	close(fd3);
+}
+
+void EnCrypt(char *path, char *outFile, int n){
+	int fd1,fd2;
+	char buf[50], temp[50];
+	fd1 = open(path, O_RDONLY);
+	fd2 = open(outFile, O_WRONLY | O_CREAT, 0600);
+	if (fd1 == -1 || fd2 == -1){
+		printf("open error!");
+	    	exit(1);
+	}
+	read(fd1, buf, 50);
+	int nlen = strlen(buf);
+	printf("Befor encrypt\n%s", buf);
+	printf("After encrypt\n");
+	for(int i=0; i<nlen-1; i++){
+		buf[i] = buf[i] + n;
+		temp[i] = buf[i];
+		printf("%c", buf[i]);
+	}
+	write(fd2,temp,nlen-1);
+	close(fd1);
+	close(fd2);
+}
+
+void DeCrypt(char *path, int n){
+	int fd1;
+	char buf[50];
+	fd1 = open(path, O_RDONLY);
+	if (fd1 == -1){
+		printf("open error!");
+	    	exit(1);
+	}
+	read(fd1, buf, 50);
+	int nlen = strlen(buf);
+	printf("Befor decrypt\n%s", buf);
+	printf("After decrypt\n");
+	for(int i=0; i<nlen-1; i++){
+		buf[i] = buf[i] - n;
+		printf("%c", buf[i]);
+	}
+	close(fd1);
 }
 
 
