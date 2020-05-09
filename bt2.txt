@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+void sum_sub(int a, int b, float c, float d){
+    printf("%d %d\n", a+b,a-b);
+    printf("%.1f %.1f", c+d,c-d);
+}
+
+int main()
+{   
+    int a,b;
+    float c,d;
+    scanf("%d %d", &a,&b);
+    scanf("%f %f", &c,&d);
+    sum_sub(a,b,c,d);
+    return 0;
+}
